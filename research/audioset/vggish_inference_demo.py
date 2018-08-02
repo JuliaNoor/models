@@ -77,6 +77,18 @@ flags.DEFINE_string(
 
 FLAGS = flags.FLAGS
 
+def _int64_list_feature(int64_list):
+    return tf.train.Feature(int64_list=tf.train.Int64List(value=int64_list))
+
+def _bytes_feature(value):
+    return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
+
+def _make_bytes(int_array):
+  if bytes == str:  # Python2
+    return ''.join(map(chr, int_array))
+  else:
+    return bytes(int_array)
+
 
 def main(_):
   # In this simple example, we run the examples from a single audio file through
@@ -128,6 +140,12 @@ def main(_):
     # the rows are written as a sequence of bytes-valued features, where each
     # feature value contains the 128 bytes of the whitened quantized embedding.
     seq_example = tf.train.SequenceExample(
+	context=tf.train.Features(feature={
+            vggish_params.LABELS_FEATURE_KEY:
+                _int64_list_feature(sorted(map(int, '0'))),
+            vggish_params.VIDEO_FILE_KEY_FEATURE_KEY:
+                _bytes_feature(_make_bytes(map(ord, FLAGS.wav_file))),
+	}),
         feature_lists=tf.train.FeatureLists(
             feature_list={
                 vggish_params.AUDIO_EMBEDDING_FEATURE_NAME:

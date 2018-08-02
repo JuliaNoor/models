@@ -1,0 +1,1 @@
+python vggish_inference_demo.py --wav_file /mnt/disks/sdb/data/youtube_video/251.wav --tfrecord_file /mnt/disks/sdb/data/youtube_video/251.tfrecord > /mnt/disks/sdb/data/youtube_video/251_tfrecord.txt
