@@ -19,7 +19,7 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input_youtube_id_tsv', '/mnt/disks/disk-1/data/youtube_video/youtube_incident_train.txt',
+  flags.DEFINE_string('input_youtube_id_tsv', '/mnt/disks/disk-1/data/youtube_video/incident/youtube_incident_train.txt',
                     'TSV file with lines "<id>\t<start_time>\t<end_time>\t<label>" where '
                     ' and <labels> '
 	            'must be an integer list joined with semi-colon ";"')
@@ -43,18 +43,17 @@ def main(unused_argv):
       print(sh_cmd)
       #call(sh_cmd);
       os.system(sh_cmd)
-      print('--0')
       wav_file = FLAGS.output_dir+'/'+str(i)+'.wav'
       if (os.path.isfile(wav_file)): 
         t1 = float(st_time) * 1000
         t2 = float(end_time) * 1000
         newAudio = AudioSegment.from_wav(wav_file)
         newAudio = newAudio[t1:t2]
-        print('--1')
         new_wav_file = FLAGS.output_dir+'/'+str(i)+'_cut.wav'
         newAudio.export(new_wav_file, format="wav") 
-        print('--2')
         f.write(new_wav_file+"\t"+st_time+"\t"+end_time+"\t"+label+"\r\n")    
+        rm_cmd = 'rm -rf '+wav_file
+        os.system(rm_cmd)
       #examples_batch = vggish_input.wavfile_to_examples(wav_file)
       #print(examples_batch)
     except:
