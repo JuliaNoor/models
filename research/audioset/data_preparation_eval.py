@@ -21,12 +21,12 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input', '/mnt/disks/sdb/data/youtube_video/eval_segments.csv',
+  flags.DEFINE_string('input', '/home/shakil/PSVA/data/Google_audioset/eval_segments.csv',
                     'CSV file with lines <id>,<start_time>,<end_time>,"<label>" where '
                     ' and <labels> ')
 	            
 
-  flags.DEFINE_string('output_dir','/mnt/disks/sdb/data/youtube_video/', 'where to save the tsv file')
+  flags.DEFINE_string('output_dir','/home/shakil/PSVA/data/output/eval/', 'where to save the tsv file')
 
 def main(unused_argv):
   print(FLAGS.input)

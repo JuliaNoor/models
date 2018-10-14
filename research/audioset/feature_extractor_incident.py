@@ -17,11 +17,11 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input_video_label', '/mnt/disks/disk-1/data/youtube_video/incident/video_path_label_incident.txt',
+  flags.DEFINE_string('input_video_label', '/home/shakil/PSVA/data/output/incident/video_path_label_incident.txt',
                     'TSV file with lines "<video_file_path>\t<start_time>\t<end_time>\t<class_label>" where '
                     ' and <labels> '
 	            'must be an integer list joined with semi-colon ";"')
-  flags.DEFINE_string( 'tfrecord_file', '/mnt/disks/disk-1/data/youtube_video/incident/feature_label.tfrecord',
+  flags.DEFINE_string( 'tfrecord_file', '/home/shakil/PSVA/data/output/incident/feature_label.tfrecord',
 		    'Path to a TFRecord file where embeddings will be written.')
 
   flags.DEFINE_string(

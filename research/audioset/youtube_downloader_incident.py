@@ -19,12 +19,12 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input_youtube_id_tsv', '/mnt/disks/disk-1/data/youtube_video/youtube_incident_train.txt',
+  flags.DEFINE_string('input_youtube_id_tsv', '/home/shakil/PSVA/data/output/incident/youtube_incident_train.txt',
                     'TSV file with lines "<id>\t<start_time>\t<end_time>\t<label>" where '
                     ' and <labels> '
 	            'must be an integer list joined with semi-colon ";"')
 
-  flags.DEFINE_string('output_dir','/mnt/disks/disk-1/data/youtube_video/incident', 'where to save the wav file')
+  flags.DEFINE_string('output_dir','/home/shakil/PSVA/data/output/incident', 'where to save the wav file')
 
 def main(unused_argv):
   print(FLAGS.input_youtube_id_tsv)
@@ -55,6 +55,8 @@ def main(unused_argv):
         newAudio.export(new_wav_file, format="wav") 
         print('--2')
         f.write(new_wav_file+"\t"+st_time+"\t"+end_time+"\t"+label+"\r\n")    
+        rm_cmd = 'rm -rf '+wav_file
+        os.system(rm_cmd)
       #examples_batch = vggish_input.wavfile_to_examples(wav_file)
       #print(examples_batch)
     except:
