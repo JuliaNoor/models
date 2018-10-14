@@ -18,8 +18,8 @@ import os
 import time
 
 import numpy
-import tensorflow as tf
 
+import tensorflow as tf
 from tensorflow import app
 from tensorflow import flags
 from tensorflow import gfile
