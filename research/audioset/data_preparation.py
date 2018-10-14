@@ -21,18 +21,18 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input', '/mnt/disks/disk-1/data/youtube_video/unbalanced_train_segments.csv',
+  flags.DEFINE_string('input', '/Users/julia/PSVA/data/Google_audioset/balanced_train_segments.csv',
                     'CSV file with lines <id>,<start_time>,<end_time>,"<label>" where '
                     ' and <labels> ')
 	            
 
-  flags.DEFINE_string('output_dir','/mnt/disks/disk-1/data/youtube_video/', 'where to save the tsv file')
+  flags.DEFINE_string('output_dir','/Users/julia/PSVA/data/output/balanced/', 'where to save the tsv file')
 
 def main(unused_argv):
   print(FLAGS.input)
 
 
-  f= open(FLAGS.output_dir+"/youtube_unbalanced_train.txt","w+")
+  f= open(FLAGS.output_dir+"/youtube_balanced_train.txt","w+")
 
 #  for youtube_id,st_time, end_time, label in csv.reader(open(FLAGS.input),delimiter=','):
   count = 0

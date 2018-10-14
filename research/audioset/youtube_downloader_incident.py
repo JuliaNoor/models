@@ -43,17 +43,14 @@ def main(unused_argv):
       print(sh_cmd)
       #call(sh_cmd);
       os.system(sh_cmd)
-      print('--0')
       wav_file = FLAGS.output_dir+'/'+str(i)+'.wav'
       if (os.path.isfile(wav_file)): 
         t1 = float(st_time) * 1000
         t2 = float(end_time) * 1000
         newAudio = AudioSegment.from_wav(wav_file)
         newAudio = newAudio[t1:t2]
-        print('--1')
         new_wav_file = FLAGS.output_dir+'/'+str(i)+'_cut.wav'
         newAudio.export(new_wav_file, format="wav") 
-        print('--2')
         f.write(new_wav_file+"\t"+st_time+"\t"+end_time+"\t"+label+"\r\n")    
         rm_cmd = 'rm -rf '+wav_file
         os.system(rm_cmd)
