@@ -51,11 +51,13 @@ def main(unused_argv):
 
   for wav_file,st_time, end_time, label in csv.reader(open(FLAGS.input_video_label),delimiter='\t'):
     print( wav_file,st_time, end_time, label)
+    duration_wav_file = float(end_time) - float(st_time)
+    if duration_wav_file<7:
+      continue
     if (os.path.isfile(wav_file)): 
       examples_batch = vggish_input.wavfile_to_examples(wav_file)
       #print(examples_batch)
       pproc = vggish_postprocess.Postprocessor(FLAGS.pca_params)
-
       with tf.Graph().as_default(), tf.Session() as sess:
        # Define the model in inference mode, load the checkpoint, and
        # locate input and output tensors.
