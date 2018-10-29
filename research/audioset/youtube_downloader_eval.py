@@ -19,12 +19,12 @@ from subprocess import call
 FLAGS = flags.FLAGS
 
 if __name__ == '__main__':
-  flags.DEFINE_string('input_youtube_id_tsv', '/mnt/disks/sdb/data/youtube_video/youtube_eval.txt',
+  flags.DEFINE_string('input_youtube_id_tsv', '/home/shakil/PSVA/data/output/eval/youtube_eval.txt',
                     'TSV file with lines "<id>\t<start_time>\t<end_time>\t<label>" where '
                     ' and <labels> '
 	            'must be an integer list joined with semi-colon ";"')
 
-  flags.DEFINE_string('output_dir','/mnt/disks/sdb/data/youtube_video', 'where to save the wav file')
+  flags.DEFINE_string('output_dir','/home/shakil/PSVA/data/output/eval', 'where to save the wav file')
 
 def main(unused_argv):
   print(FLAGS.input_youtube_id_tsv)
